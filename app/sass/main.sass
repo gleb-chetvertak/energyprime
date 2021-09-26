@@ -1,0 +1,773 @@
+@import "app/libs/bootstrap/dist/bootstrap-grid"
+
+// =============================
+// Mixins
+// =============================
+
+@mixin font($fz, $lh, $ls, $fw, $tt, $col)
+	font-size: $fz
+	line-height: $lh
+	letter-spacing: $ls
+	font-weight: $fw
+	text-transform: $tt
+	color: $col
+
+// =============================
+// Global variables
+// =============================
+
+$orange: #ff9900
+$white: #ffffff
+$violet: #49258f
+$violetTp: rgba(51, 51, 153, .7)
+$brown: #522f2d
+$lighter: rgba(255, 255, 255, .95)
+$light: #EBEDEF
+$darker: #C5CAD0
+$dark: #3f5165
+
+/* ============================= */
+/* Modules */
+/* ============================= */
+
+*
+	font-family: "Roboto", sans-serif
+
+html
+	font-size: 10px
+
+h1
+	@include font(4.6rem, 69px, null, 700, null, null)
+	font-family: "Roboto Slab", sans-serif
+
+h2
+	@include font(38px, 57px, null, 700, null, null)
+	padding: 0 30px 60px
+	text-align: center
+
+h3
+	@include font(34px, 51px, null, 400, null, null)
+	font-family: "Roboto Slab", sans-serif
+
+p
+	@include font(20px, 30px, null, 500, null, null)
+
+.sect
+	padding: 75px 0
+
+/* Buttons */
+
+.btn
+	display: inline-block
+	border-width: 2px
+	border-style: solid
+	text-align: center
+	@include font(18px, 18px, null, 400, null, null)
+	text-decoration: none
+	background-color: transparent
+	transition: color .3s ease, background-color .3s ease
+	cursor: pointer
+
+	&:hover
+		color: $white
+		background-color: $orange
+
+	&-dark
+		@extend .btn
+		border-color: $orange
+		color: $orange
+
+		&:hover
+			color: $white
+			background-color: $orange
+
+	&-light
+		@extend .btn
+		border-color: white
+		color: $white
+
+		&:hover
+			color: $orange
+			background-color: $white
+
+/* Section 4 items' nice hover */
+
+.preferences_itemHover
+
+	&1
+		width: 0
+		height: 12px
+		position: absolute
+		top: 0
+		left: 0
+		background-color: $orange
+		z-index: 10
+
+	&2
+		width: 12px
+		height: 0
+		position: absolute
+		top: 0
+		right: 0
+		background-color: $orange
+		z-index: 10
+
+	&3
+		width: 0
+		height: 12px
+		position: absolute
+		bottom: 0
+		right: 0
+		background-color: $orange
+		z-index: 10
+
+	&4
+		width: 12px
+		height: 0
+		position: absolute
+		bottom: 0
+		left: 0
+		background-color: $orange
+		z-index: 10
+
+.preferences_item:hover
+
+	& .preferences_itemHover1
+		width: 100%
+		transition: width .15s ease
+
+	& .preferences_itemHover2
+		height: 100%
+		transition: height .15s ease .15s
+
+	& .preferences_itemHover3
+		width: 100%
+		transition: width .15s ease .3s
+
+	& .preferences_itemHover4
+		height: 100%
+		transition: height .15s ease .45s
+
+	& .preferences_itemInfoBtn
+		color: $white
+		background-color: $orange
+
+	// Inputs
+
+// Input styles for forms
+
+.inputText
+	width: 100%
+	height: 48px
+	padding: 0 12px
+	border: 1px solid $darker
+	margin-bottom: 20px
+	text-align: center
+	@include font(16px, 46px, null, 400, null, $orange)
+	background-color: $white
+	resize: none
+
+	&::-webkit-input-placeholder
+		color: $orange
+	&::-moz-placeholder
+		color: $orange
+	&:-moz-placeholder
+		color: $orange
+	&:-ms-input-placeholder
+		color: $orange
+
+	&:hover,
+	&:focus,
+	&:active
+		background-color: $light
+
+	&:focus
+
+		&::-webkit-input-placeholder
+			color: transparent
+		&::-moz-placeholder
+			color: transparent
+		&:-moz-placeholder
+			color: transparent
+		&:-ms-input-placeholder
+			color: transparent
+
+/* ============================= */
+/* Styles */
+/* ============================= */
+
+/* ============================= */
+/* Index Page */
+/* ============================= */
+
+.header
+	width: 100%
+	position: fixed
+	background-color: $dark
+	z-index: 9000
+	box-shadow: 0 2px 5px rgba(0, 0, 0, .6)
+
+	&_container
+		display: flex
+		padding:
+			top: 20px
+			bottom: 20px
+		justify-content: space-between
+		align-items: center
+		@include make-container()
+		@include media-breakpoint-up(xs)
+			@include make-container-max-widths()
+
+	&_logo
+
+		&Img
+			height: 52.4px
+
+	&_menu
+		text-align: right
+
+		&Item
+			padding: 12px 20px
+			@include font(18px, 18px, null, 400, null, $orange)
+			text-decoration: none
+			transition: color .3s ease
+
+			&:hover
+				color: $white
+
+	&_btn
+		@extend .btn-light
+		padding: 15px 24px
+		text-decoration: none
+
+.first
+	@extend .sect
+	height: 100vh
+	position: relative
+	background-image: url('../img/mainbg1.jpg')
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: center center
+
+	&_violetBg
+		width: 100%
+		position: absolute
+		top: 50%
+		background-color: $violetTp
+		transform: translateY(-50%)
+
+	&_container
+		position: relative
+		top: 50%
+		transform: translateY(-50%)
+		@include make-container()
+		@include media-breakpoint-up(xs)
+			@include make-container-max-widths()
+
+	&_wrapper
+		max-width: 900px
+		padding: 30px 0
+		margin: auto
+		text-align: center
+
+	&_headline
+		margin-bottom: 20px
+		color: $orange
+
+	&_meta
+		margin-bottom: 40px
+		color: $white
+
+	&_btn
+		@extend .btn-dark
+		padding: 12px 60px
+		@include font(20px, 20px, null, 700, null, null)
+
+.about
+	@extend .sect
+	background-color: $orange
+
+	&_container
+		text-align: center
+		@include make-container()
+		@include media-breakpoint-up(xs)
+			@include make-container-max-widths()
+
+	&_headline
+		color: $brown
+
+	&_counter
+		display: flex
+		max-width: 725px
+		padding: 50px 0
+		margin: auto
+		justify-content: center
+
+		&Item
+			padding: 15px
+			flex: 0 1 300px
+
+			&Amount
+				@include font(80px, 80px, null, null, null, $violet)
+
+			&Meta
+				color: $brown
+
+		&VLine
+			display: inline-block
+			width: 8px
+			height: 150px
+			margin: auto
+			background-color: $dark
+
+	&_text
+		max-width: 700px
+		margin: auto
+		color: $brown
+
+.chart
+	@extend .sect
+	color: $dark
+
+	&_container
+		text-align: center
+		@include make-container()
+		@include media-breakpoint-up(xs)
+			@include make-container-max-widths()
+
+	& img
+		width: 80%
+
+	// &_content
+	// 	width: 80%
+
+.strengths
+	@extend .sect
+	background-color: white
+
+	&_headline
+		color: $orange
+
+	&_container
+		text-align: center
+		@include make-container()
+		@include media-breakpoint-up(xs)
+			@include make-container-max-widths()
+
+	& img
+		width: 80%
+		margin-top: -80px
+
+.preferences
+	@extend .sect
+	background-color: $dark
+
+	&_headline
+		width: 100%
+		text-align: center
+		color: $orange
+
+	&_container
+		display: flex
+		flex-wrap: wrap
+		justify-content: center
+		@include make-container()
+		@include media-breakpoint-up(xs)
+			@include make-container-max-widths()
+
+	&_item
+		width: 47%
+		min-width: 430px
+		padding: 10px 10px 260px
+		margin: 10px
+		position: relative
+		color: $dark
+		background-color: $white
+		text-decoration: none
+		box-shadow: -5px 5px 5px rgba(0, 0, 0, .2)
+
+		&Info
+			display: flex
+			flex-direction: column
+			justify-content: space-between
+			align-items: center
+			height: 100%
+			padding: 45px 10% 25px
+			text-align: center
+
+			&Headline
+				display: flex
+				align-items: center
+				height: 75px
+				margin-bottom: 20px
+
+			&Text
+				margin-bottom: 20px
+
+			&Btn
+				@extend .btn-dark
+				display: inline-block
+				padding: 12px 35px
+
+		&Img
+			width: calc(100% - 20px)
+			height: 250px
+			position: absolute
+			left: 10px
+			bottom: 10px
+			background-repeat: no-repeat
+			background-size: cover
+			background-position: center center
+			z-index: 1
+
+			&-1
+				@extend .preferences_itemImg
+				background-image: url('../img/state.png')
+
+			&-2
+				@extend .preferences_itemImg
+				background-image: url('../img/communication.png')
+
+			&-3
+				@extend .preferences_itemImg
+				background-image: url('../img/responsibility.png')
+
+			&-4
+				@extend .preferences_itemImg
+				background-image: url('../img/recruiting.png')
+
+			&-5
+				@extend .preferences_itemImg
+				background-image: url('../img/expenses.png')
+
+			&-6
+				@extend .preferences_itemImg
+				background-image: url('../img/efficiency.png')
+
+// .team
+// 	@extend .sect
+// 	color: $dark
+// 	background-color: $white
+
+// 	&_container
+// 		display: flex
+// 		justify-content: space-between
+// 		align-items: center
+// 		flex-wrap: wrap
+// 		align-content: center
+// 		@include make-container()
+// 		@include media-breakpoint-up(xs)
+// 			@include make-container-max-widths()
+
+// 	&_member
+// 		margin-bottom: 75px
+// 		flex-basis: 25%
+// 		order: 3
+// 		text-align: center
+
+// 		&-leader
+// 			@extend .team_member
+// 			margin:
+// 				left: auto
+// 				right: auto
+// 			order: 1
+
+// 		&Img
+// 			width: 100%
+// 			margin-bottom: -5px
+
+// 		&Meta
+// 			padding: 20px 15px
+// 			color: $dark
+// 			background-color: $light
+
+// 			&Headline
+// 				margin-bottom: 10px
+
+
+// 	&_about
+// 		max-width: 570px
+// 		margin: 0 auto 75px
+// 		flex-basis: 70%
+// 		order: 2
+
+// 		&Headline
+// 			margin-bottom: 15px
+
+.services
+	@extend .sect
+	color: $orange
+	// background-color: $dark
+	background-color: $white
+
+	&_headline
+		color: $orange
+
+	&_container
+		display: flex
+		justify-content: space-between
+		flex-wrap: wrap
+		@include make-container()
+		@include media-breakpoint-up(xs)
+			@include make-container-max-widths()
+
+	&_item
+		width: 30%
+		min-width: 270px
+		margin-bottom: 75px
+		position: relative
+		box-shadow: -5px 5px 5px rgba(0, 0, 0, .2)
+		cursor: pointer
+
+		&:hover
+
+			.services_itemFog
+				opacity: .5
+
+			.services_itemHeadline
+				color: $brown
+				background-color: $orange
+
+		&Fog
+			display: block
+			width: 100%
+			// height: calc(100% - 96px)
+			height: 222px
+			position: absolute
+			background-color: #000
+			opacity: 0
+			transition: opacity .3s linear
+			z-index: 100
+
+		&Img
+			width: 100%
+			height: 222px
+			margin-bottom: -3px
+
+		&Headline
+			padding: 30px 10px
+			text-align: center
+			// color: $dark
+			color: $orange
+			// background-color: $lighter
+			background-color: $dark
+			transition: color .3s linear, background-color .3s linear
+
+		&Desc
+			display: none
+			height: 100%
+			padding: 30px 10px
+			position: absolute
+			top: 0
+			left: 0
+			justify-content: 
+			align-items: center
+			text-align: center
+			color: $brown
+			background-color: $orange
+			z-index: 1000
+
+			&-visible
+				display: flex
+
+.partners
+	@extend .sect
+	background-color: $orange
+
+	&_headline
+		color: $brown
+
+	&_container
+		@include make-container()
+		@include media-breakpoint-up(xs)
+			@include make-container-max-widths()
+
+	&_row
+		justify-content: center
+		@include make-row()
+
+	&_item
+		@include make-col-ready()
+		@include make-col(4)
+
+		&Img
+			width: 100%
+			height: 200px
+			margin-bottom: 30px
+
+.vacancies
+	@extend .sect
+	height: 80vh
+	background-color: $dark
+
+	&_headline
+		color: $white
+
+	&_container
+		@include make-container()
+		@include media-breakpoint-up(xs)
+			@include make-container-max-widths()
+
+.feedback
+	@extend .sect
+	background-color: $white
+
+	&_headline
+		color: $dark
+
+	&_container
+		@include make-container()
+		@include media-breakpoint-up(xs)
+			@include make-container-max-widths()
+
+	&Carousel
+
+		&Item
+			display: flex
+			justify-content: space-between
+			align-items: flex-start
+
+			&Img
+				width: 25% !important
+
+			&Text
+				width: 70%
+
+				&Name
+
+				&Meta
+
+				&Content
+
+		.owl-nav
+			width: 100%
+			height: auto
+			color: $darker
+
+			[class*='owl-']
+				display: inline-block
+				padding: 50px 10px
+				position: absolute
+				top: 50px
+				transform: translateY(-50%) scale(1)
+				// transition: transform .1s ease-out
+
+				&:hover
+					transform: translateY(-50%) scale(1.1)
+
+				&:active
+					transform: translateY(-50%) scale(1)
+
+			.owl-prev
+				position: absolute
+				top: 50%
+				left: 10px
+
+			.owl-next
+				position: absolute
+				top: 50%
+				right: 10px
+
+.contacts
+	background-color: $dark
+
+	&_map
+		width: 100%
+		height: 80vh
+		border: none
+
+.footer
+	color: $orange
+	background-color: $dark
+
+	&_container
+		@include make-container()
+		@include media-breakpoint-up(xs)
+			@include make-container-max-widths()
+
+	&_row
+		padding: 20px 0
+		justify-content: space-between
+		align-items: center
+		@include make-row()
+
+	&_else
+		@include make-col-ready()
+		@include make-col(4)
+
+	&_btn
+		@extend .btn-light
+		padding: 15px 24px
+
+	&_numbers
+		text-align: right
+		@include make-col-ready()
+		@include make-col(4)
+
+	&_copyright
+		padding: 20px
+		text-align: center
+		@include font(14px, 14px, null, 400, null, $darker)
+
+	@at-root
+
+		.form
+			max-width: 300px
+			padding: 50px 40px 40px
+			border-radius: 7px
+			margin: 20px auto
+			position: relative
+			text-align: center
+			background: $dark
+			box-shadow: inset 0 0 20px rgba(0,0,0,.2)
+
+			&Input
+
+				&Text
+					@extend .inputText
+
+				&Mail
+					@extend .inputText
+
+				&Tel
+					@extend .inputText
+
+				&Btn
+					width: 100%
+					border: 2px solid #FFB923
+					margin-bottom: 0
+					@include font(16px, 40px, null, 400, null, $white)
+					background: #FFB923
+					transition: background-color 0.3s ease
+					cursor: pointer
+
+					&:hover
+						background-color: #f4a805
+
+		.answer
+			display: none
+			width: 100vw
+			height: 100vh
+			padding-top: 50vh
+			position: absolute
+			top: 0
+			left: 0
+			text-align: center
+			background-color: rgba(11, 11, 11, .8)
+			z-index: 9001
+
+			&Block
+				display: inline-block
+				padding: 30px
+				border-radius: 7px
+				background-color: $dark
+				transform: translateY(-50%)
+				box-shadow: inset 0px 0px 10px 3px rgba(0, 0, 0, .6)
+
+				&Headline
+					padding-bottom: 10px
+					text-align: center
+					color: $orange
+
+				&Text
+					color: $white

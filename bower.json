@@ -1,0 +1,23 @@
+{
+  "name": "standard",
+  "description": "Standard start system for every project",
+  "main": "index.js",
+  "authors": [
+    "Glebanana"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "owl.carousel": "^2.2.1",
+    "chart.js": "^2.7.2",
+    "jquery.maskedinput": "^1.4.1"
+  }
+}
